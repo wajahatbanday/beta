@@ -4,15 +4,23 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-  let [counter, setCounter] = useState(15);
+  let [counter, setCounter] = useState(0);
   const addValue = () => {
-    counter += 1;
-    setCounter(counter);
+    if (counter < 20) {
+      counter += 1;
+      setCounter(counter);
+    } else {
+      alert("Maximum Value Reached");
+    }
   };
 
   const decreaseValue = () => {
-    counter -= 1;
-    setCounter(counter);
+    if (counter > 0) {
+      counter -= 1;
+      setCounter(counter);
+    } else {
+      alert("Lowest Value Reached");
+    }
   };
 
   return (
