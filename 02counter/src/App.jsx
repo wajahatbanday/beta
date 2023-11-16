@@ -19,19 +19,19 @@ function App() {
       counter -= 1;
       setCounter(counter);
     } else {
-      alert("Lowest Value Reached");
+      alertNotif = alert("Lowest Value Reached");
     }
   };
 
   return (
     <>
-      <h1>Chai aur React</h1>
-      <h2>Counter value: {counter}</h2>
+      <h1>Counter</h1>
+      <h2>Current Count : {counter}</h2>
 
-      <button onClick={addValue}>Add Value</button>
+      <button onClick={addValue}>Add Value (+1)</button>
       <br />
       <br />
-      <button onClick={decreaseValue}>Decrease Value</button>
+      <button onClick={decreaseValue}>Decrease Value (-1)</button>
     </>
   );
 }
