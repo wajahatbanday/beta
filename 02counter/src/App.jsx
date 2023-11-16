@@ -5,21 +5,25 @@ import "./App.css";
 
 function App() {
   let [counter, setCounter] = useState(15);
-  // let counter = 15;
   const addValue = () => {
     counter += 1;
     setCounter(counter);
-    console.log(counter);
   };
+
+  const decreaseValue = () => {
+    counter -= 1;
+    setCounter(counter);
+  };
+
   return (
     <>
       <h1>Chai aur React</h1>
       <h2>Counter value: {counter}</h2>
 
-      <button onClick={addValue}>Add Value {counter}</button>
+      <button onClick={addValue}>Add Value</button>
       <br />
       <br />
-      <button>Decrease Value {counter}</button>
+      <button onClick={decreaseValue}>Decrease Value</button>
     </>
   );
 }
