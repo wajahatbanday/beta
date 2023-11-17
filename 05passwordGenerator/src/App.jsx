@@ -24,7 +24,7 @@ function App() {
   }, [length, numberAllowed, charatersAllowed, passwordGenerator]);
   return (
     <>
-      <div className="flex justify-center items-center w-[100vw] h-[100vh] bg-gradient-to-r from-blue-600 to-blue-300">
+      <div className="flex justify-center items-center w-[100vw] h-[100vh] bg-gradient-to-r from-blue-600 to-blue-300 font-panton tracking-wider">
         <div className="w-full max-w-md shadow-xl rounded-lg p-5 my-8 text-black bg-gradient-to-r from-blue-300 to-blue-600">
           <h1 className="text-black text-center text-[25px] p-2">
             Password Generator

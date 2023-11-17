@@ -2,7 +2,17 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          500: "FF6363",
+          800: "FF1313",
+        },
+      },
+      fontFamily: {
+        panton: ["Panton", "cursive"],
+      },
+    },
   },
   plugins: [],
 };
