@@ -1,16 +1,20 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 function App() {
   const [length, setLength] = useState(8);
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charatersAllowed, setCharactersAllowed] = useState(false);
   const [password, setPassword] = useState("");
+  const [buttonText, setButtonText] = useState("Copy");
+
+  // useRef Hook
+  const passwordRef = useRef(null);
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     if (numberAllowed) str += "0123456789";
-    if (charatersAllowed) str += "!@#$%^&*";
+    if (charatersAllowed) str += "!@#$%^&*_";
 
     for (let i = 1; i <= length; i++) {
       let char = Math.floor(Math.random() * str.length + 1);
@@ -19,6 +23,16 @@ function App() {
 
     setPassword(pass);
   }, [length, numberAllowed, charatersAllowed, setPassword]);
+
+  const copyPasswordToClipboard = useCallback(() => {
+    passwordRef.current?.select();
+    window.navigator.clipboard.writeText(password);
+    setButtonText("Copied ✅");
+    setTimeout(() => {
+      setButtonText("Copy");
+    }, 3000);
+  }, [password]);
+
   useEffect(() => {
     passwordGenerator();
   }, [length, numberAllowed, charatersAllowed, passwordGenerator]);
@@ -36,9 +50,13 @@ function App() {
               className="outline-none w-full py-1 px-3 text-center"
               placeholder="password"
               readOnly
+              ref={passwordRef}
             />
-            <button className="outline-none bg-blue-300 text-black px-3 py-0.5 shrink-0">
-              Copy
+            <button
+              className="outline-none bg-blue-300 text-black px-3 py-0.5 shrink-0"
+              onClick={copyPasswordToClipboard}
+            >
+              {buttonText}
             </button>
           </div>
           <div className="flex justify-center text-sm gap-x-5">
@@ -46,7 +64,7 @@ function App() {
               <input
                 type="range"
                 min={8}
-                max={100}
+                max={32}
                 value={length}
                 className="cursor-pointer accent-blue-800"
                 onChange={(e) => {
