@@ -1,16 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Route, createRoutesFromElements } from "react-router-dom";
 import Home from "./components/Home/Home.jsx";
 import About from "./components/About/About.jsx";
 import Layout from "./layout.jsx";
 import Contact from "./components/Contact/Contact.jsx";
 import User from "./components/User/User.jsx";
 import Github, { githubInfoLoader } from "./components/Github/Github.jsx";
-
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Route, createRoutesFromElements } from "react-router-dom";
 // const router = createBrowserRouter([
 //   {
 //     path: "/",
